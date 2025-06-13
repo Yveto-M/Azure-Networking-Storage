@@ -9,24 +9,26 @@ This project demonstrates secure deployment and monitoring of Azure storage usin
 
 ---
 
-## 📁 Step-by-Step Implementation
+ 📁 Step-by-Step Implementation
 
----
 
-### **1. Create a Virtual Network (VNet)**
+ 1. Create a Virtual Network (VNet)
 
 - Created a virtual network with two subnets:
-  - **Database Subnet**: `10.0.0.0/27`
+  - Database Subnet: `10.X.0.0/XX`
     - Marked as private
     - Enabled Service Endpoint for `Microsoft.Storage`
-  - **Web Subnet**: `10.0.1.0/27`
+  - **Web Subnet**: `10.0.X.0/XX`
 
 📸 _Screenshot: VNet and Subnet Configuration_  
-→ **Paste here**
+<img width="738" alt="creating vnet" src="https://github.com/user-attachments/assets/767a1adb-6152-445e-a4b8-bb49ae6472f2" />
+
+<img width="863" alt="subnet 1" src="https://github.com/user-attachments/assets/25a30aa6-1f1e-4d0a-8716-c8758a4175cb" />
+
 
 ---
 
-### **2. Deploy a Network Security Group (NSG)**
+**2. Deploy a Network Security Group (NSG)**
 
 - Attached NSG to the **Web** subnet.
 - Added the following inbound security rules:
@@ -39,7 +41,7 @@ This project demonstrates secure deployment and monitoring of Azure storage usin
 
 ---
 
-### **3. Create and Configure a Storage Account**
+**3. Create and Configure a Storage Account**
 
 - Created a **StorageV2** account.
 - Set replication to **LRS**.
@@ -52,7 +54,7 @@ This project demonstrates secure deployment and monitoring of Azure storage usin
 
 ---
 
-### **4. Query Logs in Azure Monitor (Log Analytics)**
+**4. Query Logs in Azure Monitor (Log Analytics)**
 
 - Navigated to Log Analytics Workspace.
 - Ran the following Kusto query to monitor CPU usage:
@@ -70,7 +72,7 @@ Perf
 
 ---
 
-### **5. Secure Backup and Recovery**
+**5. Secure Backup and Recovery**
 
 * Opened **Recovery Services Vault**.
 * Verified that:
