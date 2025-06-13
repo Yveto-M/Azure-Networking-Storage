@@ -1,143 +1,97 @@
 # Azure-Networking-Storage
 This project demonstrates secure deployment and monitoring of Azure storage using best practices. It includes virtual network creation, NSG rules, private endpoint configuration, backup encryption, and secure access testing via SAS tokens and Azure Storage Explorer.
 
-
-````markdown
-# 🔐 Azure Networking & Storage – Project 2 (AZ-104 Lab)
-
-This project demonstrates secure deployment and monitoring of Azure storage using best practices. It includes virtual network creation, NSG rules, private endpoint configuration, backup encryption, and secure access testing via SAS tokens and AzCopy/Azure Storage Explorer.
+Perfect — here’s your **Project 2 rewritten entirely in the same concise, structured format as Steps 5 and 6**, with a focus on action + outcome. This is ideal for a GitHub README, a portfolio writeup, or progress documentation:
 
 ---
 
- 📁 Step-by-Step Implementation
+## ✅ Step 1: Create a Virtual Network (VNet)
 
+* Created a virtual network with two subnets:
 
- 1. Create a Virtual Network (VNet)
-
-- Created a virtual network with two subnets:
-  - Database Subnet: `10.X.0.0/XX`
-    - Marked as private
-    - Enabled Service Endpoint for `Microsoft.Storage`
-  - **Web Subnet**: `10.0.X.0/XX`
-
-📸 _Screenshot: VNet and Subnet Configuration_  
-<img width="738" alt="creating vnet" src="https://github.com/user-attachments/assets/767a1adb-6152-445e-a4b8-bb49ae6472f2" />
-
-<img width="863" alt="subnet 1" src="https://github.com/user-attachments/assets/25a30aa6-1f1e-4d0a-8716-c8758a4175cb" />
-
+  * `Database` subnet: `10.0.0.0/27`, marked as private, with service endpoint `Microsoft.Storage` enabled.
+  * `Web` subnet: `10.0.1.0/27` with default settings.
 
 ---
 
-**2. Deploy a Network Security Group (NSG)**
+## ✅ Step 2: Deploy a Network Security Group (NSG)
 
-- Attached NSG to the **Web** subnet.
-- Added the following inbound security rules:
-  - ✅ Allow HTTPS traffic (Port 443)
-  - ❌ Block all other inbound traffic
-  - System rules: `AllowVnetInBound`, `AllowAzureLoadBalancerInBound`, `DenyAllInBound`
+* Created a Network Security Group and associated it with the `Web` subnet.
+* Configured inbound rules:
 
-📸 _Screenshot: NSG Rules Applied to Web Subnet_  
-→ **Paste here**
+  * Allowed HTTPS (port 443).
+  * Denied all other inbound traffic not explicitly permitted.
+  * Verified default rules: `AllowVnetInBound`, `AllowAzureLoadBalancerInBound`, `DenyAllInBound`.
 
 ---
 
-**3. Create and Configure a Storage Account**
+## ✅ Step 3: Create and Configure a Storage Account
 
-- Created a **StorageV2** account.
-- Set replication to **LRS**.
-- **Disabled public access**.
-- Created a **Private Endpoint** within the `Database` subnet.
-- Used **Microsoft-managed keys** for encryption.
-
-📸 _Screenshot: Storage Account Configuration with Private Endpoint_  
-→ **Paste here**
+* Deployed a Storage Account with replication set to **LRS**.
+* Disabled public access and created a **private endpoint** scoped to the `Database` subnet.
+* Enabled **Microsoft-managed encryption** to protect stored data.
 
 ---
 
-**4. Query Logs in Azure Monitor (Log Analytics)**
+## ✅ Step 4: Query Logs in Azure Monitor
 
-- Navigated to Log Analytics Workspace.
-- Ran the following Kusto query to monitor CPU usage:
+* Opened Log Analytics Workspace and ran the following KQL query:
 
-```kql
-Perf
-| where ObjectName == "Processor" and CounterName == "% Processor Time"
-| summarize Avg_CPU = avg(CounterValue) by bin(TimeGenerated, 5m)
-````
+  ```kql
+  Perf
+  | where ObjectName == "Processor" and CounterName == "% Processor Time"
+  | summarize Avg_CPU = avg(CounterValue) by bin(TimeGenerated, 5m)
+  ```
 
-* Visualized the data as a time-series chart.
-
-📸 *Screenshot: KQL Output & Visualization in Log Analytics*
-→ **Paste here**
+* Visualized average CPU usage over 5-minute intervals using built-in charting tools.
 
 ---
 
-**5. Secure Backup and Recovery**
+## ✅ Step 5: Secure Backup and Recovery
 
-* Opened **Recovery Services Vault**.
-* Verified that:
+* Navigated to **Recovery Services Vault** settings.
+* Verified:
 
-  * ✅ TLS encryption was enabled for backup data.
-  * ✅ Microsoft-managed key encryption was in use under **Properties**.
-
-📸 *Screenshot: Backup Vault Showing TLS & Encryption Settings*
-→ **Paste here**
+  * **TLS** was enabled for secure backup traffic.
+  * **Encryption settings** were properly configured in the Vault’s properties.
 
 ---
 
-### **6. Test Access and Encryption**
+## ✅ Step 6: Test Access and Encryption
 
-#### A. Generate SAS Token
+### 🔹 A. Generate SAS Token
 
-* Went to:
-  `Storage Account → Security + Networking → Shared Access Signature`
-* Set permissions: `Read`, `Add`, `Write`.
-* Generated a **SAS URI**.
+* Opened the storage account, went to **Security + Networking → Shared Access Signature**.
+* Configured permissions and generated a valid SAS URI for Blob access.
 
-📸 *Screenshot: SAS Token Configuration*
-→ **Paste here**
+### 🔹 B. Use Azure Storage Explorer
 
+* Opened Storage Explorer, connected using the generated **SAS URI**.
+* Successfully uploaded `sample.txt` and confirmed the upload via the interface.
 
-
-#### C. Upload File Using Azure Storage Explorer (GUI)
-
-* Connected to the blob container using **SAS URI**.
-* Uploaded `sample.txt` successfully via GUI.
-* Confirmed upload visually in the interface.
-
-📸 *Screenshot: File in Azure Storage Explorer*
-→ **Paste here**
-<img width="486" alt="nsg creation" src="https://github.com/user-attachments/assets/7155e3e3-9b93-49e7-afed-a00ddadd56f9" />
-
----
-
-## ✅ Summary
+✅ Summary
 
 This project covered:
 
-* Azure networking & subnet isolation
-* Traffic filtering via NSGs
-* Storage secured via private endpoints
-* Monitoring with KQL and Log Analytics
-* Backup encryption validation
-* Access testing using both CLI and GUI tools
+Azure networking & subnet isolation
+Traffic filtering via NSGs
+Storage secured via private endpoints
+Monitoring with KQL and Log Analytics
+Backup encryption validation
+Access testing using both CLI and GUI tools
+🧰 Tools Used
 
----
+Azure Portal
+Network Security Groups
+Azure Storage (Private Endpoints + SAS)
+Azure Monitor / Log Analytics
+Recovery Services Vault
+AzCopy
+Azure Storage Explorer
+👤 Author
 
-## 🧰 Tools Used
+Yveto Meus
+M.S. Cybersecurity | U.S. Navy Veteran 
 
-* Azure Portal
-* Network Security Groups
-* Azure Storage (Private Endpoints + SAS)
-* Azure Monitor / Log Analytics
-* Recovery Services Vault
-* AzCopy
-* Azure Storage Explorer
 
----
-
-## 👤 Author
-
-**Yveto Meus**
-*M.S. Cybersecurity | U.S. Navy Veteran 
 
