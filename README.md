@@ -99,8 +99,9 @@ Azure Monitor / Log Analytics,
 Recovery Services Vault,
 Azure Storage Explorer
 
-👤 Author
+👤 Author:
 Yveto Meus
+
 M.S. Cybersecurity | U.S. Navy Veteran 
 
 
