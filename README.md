@@ -91,12 +91,12 @@ Backup encryption validation
 Access testing using both CLI and GUI tools
 
 🧰 Tools Used
-Azure Portal
-Network Security Groups
-Azure Storage (Private Endpoints + SAS)
-Azure Monitor / Log Analytics
-Recovery Services Vault
-AzCopy
+
+Azure Portal,
+Network Security Groups,
+Azure Storage (Private Endpoints + SAS),
+Azure Monitor / Log Analytics,
+Recovery Services Vault,
 Azure Storage Explorer
 
 👤 Author
