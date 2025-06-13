@@ -6,8 +6,8 @@ This project demonstrates secure deployment and monitoring of Azure storage usin
 
 * Created a virtual network with two subnets:
 
-  * `Database` subnet: `10.0.0.0/27`, marked as private, with service endpoint `Microsoft.Storage` enabled.
-  * `Web` subnet: `10.0.1.0/27` with default settings.
+  * `Database` subnet: `10.X.X.0/27`, marked as private, with service endpoint `Microsoft.Storage` enabled.
+  * `Web` subnet: `10.0.X.X/27` with default settings.
 
 <img width="738" alt="creating vnet" src="https://github.com/user-attachments/assets/15599483-e866-4b2a-a0dc-db6b09568c20" />
 
