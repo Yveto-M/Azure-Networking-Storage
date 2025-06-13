@@ -97,22 +97,7 @@ Perf
 📸 *Screenshot: SAS Token Configuration*
 → **Paste here**
 
----
 
-#### B. Upload File Using AzCopy (CLI)
-
-* Opened PowerShell and ran:
-
-```powershell
-azcopy copy "$env:USERPROFILE\Desktop\sample.txt" "https://<youraccount>.blob.core.windows.net/<container>/sample.txt?<SAS-Token>"
-```
-
-* Verified successful upload via terminal output.
-
-📸 *Screenshot: AzCopy Upload Confirmation*
-→ **Paste here**
-
----
 
 #### C. Upload File Using Azure Storage Explorer (GUI)
 
@@ -122,6 +107,7 @@ azcopy copy "$env:USERPROFILE\Desktop\sample.txt" "https://<youraccount>.blob.co
 
 📸 *Screenshot: File in Azure Storage Explorer*
 → **Paste here**
+<img width="486" alt="nsg creation" src="https://github.com/user-attachments/assets/7155e3e3-9b93-49e7-afed-a00ddadd56f9" />
 
 ---
 
